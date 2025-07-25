@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✂️ ShearSync Style Builder
 
-## Getting Started
+The **ShearSync Style Builder** is a web-based white-label branding editor built with **Next.js**, **MUI**, and **TailwindCSS**. It allows barbers to configure and preview their public booking site’s design — including colors, fonts, layouts, and images — in a smooth, IDE-like interface.
 
-First, run the development server:
+Part of the broader ShearSync platform, this tool powers the visual layer of customized booking experiences.
+
+---
+
+## 🧠 Project Overview
+
+ShearSync consists of:
+
+- 📱 **Mobile admin app** (built in React Native)
+- 🌐 **Public white-labeled booking websites** (Next.js)
+- 🖌️ **Style Builder** (this project): configures themes, branding, and layout styles
+
+---
+
+## 🧱 Tech Stack
+
+| Tech                                          | Purpose                                                         |
+| --------------------------------------------- | --------------------------------------------------------------- |
+| [Next.js](https://nextjs.org)                 | App framework                                                   |
+| [MUI (Material UI)](https://mui.com)          | Component library for form elements, layout, and responsiveness |
+| [TypeScript](https://www.typescriptlang.org/) | Static typing                                                   |
+| [Supabase](https://supabase.com)              | Auth, database, and storage                                     |
+| [React](https://reactjs.org)                  | UI layer                                                        |
+
+## 📁 Project Structure
+
+/app
+/page.tsx # Root page with IDE layout
+/layouts # Booking layout previews (compact, tabbed, etc.)
+/components # Sidebar, topbar, preview wrappers, buttons
+/public # Static assets (logos, icons, placeholders)
+/styles
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-org/shearsync-style-builder.git
+cd shearsync-style-builder
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
