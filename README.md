@@ -1,4 +1,4 @@
-# ✂️ ShearSync Style Builder
+# ShearSync Style Builder
 
 The **ShearSync Style Builder** is a web-based white-label branding editor built with **Next.js**, **MUI**, and **TailwindCSS**. It allows barbers to configure and preview their public booking site’s design — including colors, fonts, layouts, and images — in a smooth, IDE-like interface.
 
@@ -6,7 +6,7 @@ Part of the broader ShearSync platform, this tool powers the visual layer of cus
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
 ShearSync consists of:
 
@@ -16,7 +16,7 @@ ShearSync consists of:
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 | Tech                                          | Purpose                                                         |
 | --------------------------------------------- | --------------------------------------------------------------- |
@@ -26,7 +26,7 @@ ShearSync consists of:
 | [Supabase](https://supabase.com)              | Auth, database, and storage                                     |
 | [React](https://reactjs.org)                  | UI layer                                                        |
 
-## 📁 Project Structure
+## Project Structure
 
 /app
 /page.tsx # Root page with IDE layout
