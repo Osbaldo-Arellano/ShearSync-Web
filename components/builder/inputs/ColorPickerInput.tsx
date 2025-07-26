@@ -77,7 +77,6 @@ export default function ColorPickerInput({
       >
         <SketchPicker
           color={value}
-          height={10}
           onChangeComplete={(color: { hex: string }) => onChange(color.hex)}
           disableAlpha
         />
