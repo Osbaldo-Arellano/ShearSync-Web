@@ -11,8 +11,10 @@ interface Availability {
 }
 
 export default function StylingIDE() {
-  const [primaryColor, setPrimaryColor] = useState("#FF5733");
-  const [layout, setLayout] = useState("compact");
+  const [primaryColor, setPrimaryColor] = useState("#cccc");
+  const [layout, setLayout] = useState<"compact" | "tabbed" | "sidebar">(
+    "compact"
+  );
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [heroBannerUrls, setHeroBannerUrls] = useState<string[]>([]);
   const [about, setAbout] = useState("");

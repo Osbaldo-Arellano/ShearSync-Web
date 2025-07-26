@@ -18,6 +18,7 @@ import SocialLinksInput from "@/components/builder/sidebar/inputs/SocialLinksInp
 import ThemeSelector from "@/components/builder/sidebar/inputs/ThemeSelector";
 import HeroBannerUploader from "@/components/builder/sidebar/inputs/HeroBannerUploader";
 import { themePresets } from "@/lib/ThemePresets";
+import { LayoutOption } from "@/types/LayoutOptions";
 
 interface Availability {
   [day: string]: { open: string; close: string };
@@ -25,9 +26,9 @@ interface Availability {
 
 interface SidebarProps {
   primaryColor: string;
-  layout: string;
+  layout: LayoutOption;
   onColorChange: (color: string) => void;
-  onLayoutChange: (layout: string) => void;
+  onLayoutChange: (layout: "compact" | "tabbed" | "sidebar") => void;
   logoUrl: string | null;
   onLogoUpload: (logo: string | null) => void;
   heroBannerUrls: string[];

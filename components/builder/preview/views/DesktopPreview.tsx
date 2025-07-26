@@ -7,7 +7,7 @@ import PreviewContent from "../content/PreviewContent";
 
 interface Props {
   primaryColor: string;
-  layout: string;
+  layout: "compact" | "tabbed" | "sidebar";
   logoUrl: string | null;
   heroBannerUrls: string[];
   about: string;

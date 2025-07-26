@@ -1,14 +1,26 @@
 "use client";
 
+/**
+ * PreviewContent.tsx
+ *
+ * This is the master preview rendering component for ShearSync.
+ *
+ * Shared between both MobilePreview and DesktopPreview
+ * Accepts all dynamic user styling and content props
+ * Centralized point of truth for rendering public-facing booking pages
+ * Used during builder preview and as the deployed view content
+ * Can be serialized and sent to the server for rendering static/public pages
+ *
+ * Keep this component flexible, responsive, and keep clean conditional rendering.
+ */
+
 import Box from "@mui/material/Box";
 import AboutText from "./data/AboutText";
 import AvailabilityTable from "./data/AvailabilityTable";
-import Heading from "./styles/Heading";
 import LayoutInfo from "./styles/LayoutInfo";
 import LocationText from "./data/LocationText";
-import LogoDisplay from "./styles/LogoDisplay";
 import SocialLinksList from "./data/SocialLinksList";
-import HeroBanner from "./styles/HeroBanner";
+import DynamicHeaderPreview from "./layouts/DynamicHeaderPreview";
 
 interface SharedContentProps {
   logoUrl: string | null;
@@ -22,8 +34,8 @@ interface SharedContentProps {
   bodyWeight: number;
   location: string;
   socialLinks: string[];
-  layout: string;
-  availability?: { [day: string]: { open: string; close: string } }; // Optional (desktop only)
+  layout: "compact" | "tabbed" | "sidebar";
+  availability?: { [day: string]: { open: string; close: string } };
   showAvailability?: boolean;
   padding?: number;
   gap?: number;
@@ -61,33 +73,26 @@ export default function PreviewContent({
         p: padding,
       }}
     >
-      {/* Don't render if empty */}
-      {heroBannerUrls?.length > 0 && <HeroBanner images={heroBannerUrls} />}
-      {logoUrl && logoUrl !== "" && <LogoDisplay src={logoUrl} />}
-
-      <Heading
-        text="Booking Page Preview"
-        font={headingFont}
-        size={headingSize}
-        weight={headingWeight}
-        color={primaryColor}
+      <DynamicHeaderPreview
+        layout={layout}
+        logoUrl={logoUrl}
+        headingFont={headingFont}
+        headingSize={headingSize}
+        headingWeight={headingWeight}
+        primaryColor={primaryColor}
+        about={about}
+        bodyFont={bodyFont}
+        bodySize={bodySize}
+        bodyWeight={bodyWeight}
+        heroBannerUrls={heroBannerUrls}
       />
 
-      <AboutText
-        text={about}
-        font={bodyFont}
-        size={bodySize}
-        weight={bodyWeight}
-      />
-
-      {/* Don't render if empty */}
       {location && <LocationText location={location} />}
       {showAvailability && availability && (
         <AvailabilityTable availability={availability} />
       )}
 
       <SocialLinksList links={socialLinks} />
-
       <LayoutInfo layout={layout} />
     </Box>
   );

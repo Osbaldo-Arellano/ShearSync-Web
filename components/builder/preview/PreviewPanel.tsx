@@ -10,7 +10,7 @@ interface Availability {
 
 interface PreviewPanelProps {
   primaryColor: string;
-  layout: string;
+  layout: "compact" | "tabbed" | "sidebar";
   logoUrl: string | null;
   heroBannerUrls: string[];
   about: string;

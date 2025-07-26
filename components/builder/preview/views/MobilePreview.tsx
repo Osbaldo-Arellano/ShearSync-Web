@@ -14,7 +14,7 @@ import PreviewContent from "../content/PreviewContent";
 
 interface Props {
   primaryColor: string;
-  layout: string;
+  layout: "compact" | "tabbed" | "sidebar";
   logoUrl: string | null;
   heroBannerUrls: string[];
   about: string;
@@ -101,7 +101,6 @@ export default function MobilePreview(props: Props) {
           location={location}
           socialLinks={socialLinks}
           layout={layout}
-          // Don't pass availability; mobile skips it
           showAvailability={false}
           padding={3}
           gap={3}
