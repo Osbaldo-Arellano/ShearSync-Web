@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
 import { FaInstagram } from "react-icons/fa";
 
 export default function HeroBannerGallery({ images }: { images: string[] }) {
@@ -16,41 +19,82 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
   };
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px] rounded overflow-hidden shadow-lg">
+    <Paper
+      elevation={4}
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: { xs: 100, sm: 60, lg: 250 },
+        overflow: "hidden",
+        borderRadius: 2,
+      }}
+    >
       {/* Image */}
       <Image
         src={images[current]}
         alt={`Gallery Image ${current + 1}`}
         fill
-        className="object-cover"
+        style={{ objectFit: "cover" }}
         priority
       />
 
-      {/* Instagram Icon */}
-      <a
-        href="https://instagram.com" // Replace with actual post URL if needed
+      {/* Instagram Button */}
+      <IconButton
+        component="a"
+        href="https://instagram.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute top-2 right-2 bg-black bg-opacity-50 rounded-full p-2 text-white hover:bg-opacity-70 transition"
+        sx={{
+          position: "absolute",
+          top: 8,
+          right: 8,
+          bgcolor: "rgba(0, 0, 0, 0.5)",
+          color: "white",
+          "&:hover": {
+            bgcolor: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
       >
-        <FaInstagram className="w-5 h-5" />
-      </a>
+        <FaInstagram size={20} />
+      </IconButton>
 
       {/* Left Arrow */}
-      <button
+      <IconButton
         onClick={prev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white rounded-full p-2 z-10"
+        sx={{
+          position: "absolute",
+          left: 8,
+          top: "50%",
+          transform: "translateY(-50%)",
+          bgcolor: "rgba(0, 0, 0, 0.4)",
+          color: "white",
+          zIndex: 1,
+          "&:hover": {
+            bgcolor: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
       >
         ◀
-      </button>
+      </IconButton>
 
       {/* Right Arrow */}
-      <button
+      <IconButton
         onClick={next}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white rounded-full p-2 z-10"
+        sx={{
+          position: "absolute",
+          right: 8,
+          top: "50%",
+          transform: "translateY(-50%)",
+          bgcolor: "rgba(0, 0, 0, 0.4)",
+          color: "white",
+          zIndex: 1,
+          "&:hover": {
+            bgcolor: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
       >
         ▶
-      </button>
-    </div>
+      </IconButton>
+    </Paper>
   );
 }

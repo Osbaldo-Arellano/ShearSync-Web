@@ -127,7 +127,6 @@ export default function MobilePreview(props: Props) {
               weight={bodyWeight}
             />
             {location && <LocationText location={location} />}
-            <AvailabilityTable availability={availability} />
             <SocialLinksList links={socialLinks} />
             <LayoutInfo layout={layout} />
           </Box>
