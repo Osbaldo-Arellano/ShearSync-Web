@@ -2,9 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import Box from "@mui/material/Box";
-import Sidebar from "@/components/builder/Sidebar";
+import Sidebar from "@/components/builder/sidebar/Sidebar";
 import PreviewPanel from "@/components/builder/preview/PreviewPanel";
-import BuilderHeader from "@/components/builder/preview/BuilderHeader";
+import BuilderHeader from "@/components/builder/preview/content/styles/BuilderHeader";
 
 interface Availability {
   [day: string]: { open: string; close: string };

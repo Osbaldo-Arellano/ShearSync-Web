@@ -1,5 +1,5 @@
 "use client";
-import fontClassMap from "./fontClassMap";
+import fontClassMap from "../styles/fontClassMap";
 
 export default function AboutText({
   text,

@@ -1,16 +1,16 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import AboutText from "./AboutText";
-import AvailabilityTable from "./AvailabilityTable";
-import Heading from "./Heading";
-import HeroBanner from "./HeroBanner";
-import LayoutInfo from "./LayoutInfo";
-import LocationText from "./LocationText";
-import LogoDisplay from "./LogoDisplay";
-import SocialLinksList from "./SocialLinksList";
-import fontClassMap from "./fontClassMap";
-import PreviewContent from "./PreviewContent";
+import AboutText from "../content/data/AboutText";
+import AvailabilityTable from "../content/data/AvailabilityTable";
+import Heading from "../content/styles/Heading";
+import HeroBanner from "../content/styles/HeroBanner";
+import LayoutInfo from "../content/styles/LayoutInfo";
+import LocationText from "../content/data/LocationText";
+import LogoDisplay from "../content/styles/LogoDisplay";
+import SocialLinksList from "../content/data/SocialLinksList";
+import fontClassMap from "../content/styles/fontClassMap";
+import PreviewContent from "../PreviewContent";
 
 interface Props {
   primaryColor: string;

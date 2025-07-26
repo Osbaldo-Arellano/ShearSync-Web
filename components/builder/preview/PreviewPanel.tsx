@@ -1,8 +1,8 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import MobilePreview from "./MobilePreview";
-import DesktopPreview from "./DesktopPreview";
+import MobilePreview from "./views/MobilePreview";
+import DesktopPreview from "./views/DesktopPreview";
 
 interface Availability {
   [day: string]: { open: string; close: string };

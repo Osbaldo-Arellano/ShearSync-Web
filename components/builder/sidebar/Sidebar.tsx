@@ -5,18 +5,18 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import ColorPickerInput from "@/components/builder/inputs/ColorPickerInput";
-import LayoutSelectInput from "@/components/builder/inputs/LayoutSelectInput";
-import LogoUploadInput from "@/components/builder/inputs/LogoUploadInput";
-import AboutTextarea from "@/components/builder/inputs/AboutTextArea";
-import FontSelector from "@/components/builder/inputs/FontSelector";
-import FontSizeSlider from "@/components/builder/inputs/FontSizeSlider";
-import FontWeightSelector from "@/components/builder/inputs/FontWeightSelector";
-import HoursAndAvailabilityEditor from "@/components/builder/inputs/HoursAndAvailabilityEditor";
-import LocationInput from "@/components/builder/inputs/LocationInput";
-import SocialLinksInput from "@/components/builder/inputs/SocialLinksInput";
-import ThemeSelector from "@/components/builder/inputs/ThemeSelector";
-import HeroBannerUploader from "@/components/builder/inputs/HeroBannerUploader";
+import ColorPickerInput from "@/components/builder/sidebar/inputs/ColorPickerInput";
+import LayoutSelectInput from "@/components/builder/sidebar/inputs/LayoutSelectInput";
+import LogoUploadInput from "@/components/builder/sidebar/inputs/LogoUploadInput";
+import AboutTextarea from "@/components/builder/sidebar/inputs/AboutTextArea";
+import FontSelector from "@/components/builder/sidebar/inputs/FontSelector";
+import FontSizeSlider from "@/components/builder/sidebar/inputs/FontSizeSlider";
+import FontWeightSelector from "@/components/builder/sidebar/inputs/FontWeightSelector";
+import HoursAndAvailabilityEditor from "@/components/builder/sidebar/inputs/HoursAndAvailabilityEditor";
+import LocationInput from "@/components/builder/sidebar/inputs/LocationInput";
+import SocialLinksInput from "@/components/builder/sidebar/inputs/SocialLinksInput";
+import ThemeSelector from "@/components/builder/sidebar/inputs/ThemeSelector";
+import HeroBannerUploader from "@/components/builder/sidebar/inputs/HeroBannerUploader";
 import { themePresets } from "@/lib/ThemePresets";
 
 interface Availability {

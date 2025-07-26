@@ -1,9 +1,9 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import HeroBanner from "./HeroBanner";
-import fontClassMap from "./fontClassMap";
-import PreviewContent from "./PreviewContent";
+import HeroBanner from "../content/styles/HeroBanner";
+import fontClassMap from "../content/styles/fontClassMap";
+import PreviewContent from "../PreviewContent";
 
 interface Props {
   primaryColor: string;

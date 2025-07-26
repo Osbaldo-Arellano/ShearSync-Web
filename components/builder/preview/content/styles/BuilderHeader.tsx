@@ -1,7 +1,7 @@
 "use client";
 
-import SetScreenSize from "../inputs/SetScreenSize";
-import ZoomControls from "../inputs/ZoomControls";
+import SetScreenSize from "../../../sidebar/inputs/SetScreenSize";
+import ZoomControls from "../../../sidebar/inputs/ZoomControls";
 
 interface BuilderHeaderProps {
   viewport: "desktop" | "mobile";
