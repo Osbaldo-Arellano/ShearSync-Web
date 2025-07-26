@@ -1,14 +1,14 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import AboutText from "./content/data/AboutText";
-import AvailabilityTable from "./content/data/AvailabilityTable";
-import Heading from "./content/styles/Heading";
-import LayoutInfo from "./content/styles/LayoutInfo";
-import LocationText from "./content/data/LocationText";
-import LogoDisplay from "./content/styles/LogoDisplay";
-import SocialLinksList from "./content/data/SocialLinksList";
-import HeroBanner from "./content/styles/HeroBanner";
+import AboutText from "./data/AboutText";
+import AvailabilityTable from "./data/AvailabilityTable";
+import Heading from "./styles/Heading";
+import LayoutInfo from "./styles/LayoutInfo";
+import LocationText from "./data/LocationText";
+import LogoDisplay from "./styles/LogoDisplay";
+import SocialLinksList from "./data/SocialLinksList";
+import HeroBanner from "./styles/HeroBanner";
 
 interface SharedContentProps {
   logoUrl: string | null;

@@ -3,7 +3,7 @@
 import Box from "@mui/material/Box";
 import HeroBanner from "../content/styles/HeroBanner";
 import fontClassMap from "../content/styles/fontClassMap";
-import PreviewContent from "../PreviewContent";
+import PreviewContent from "../content/PreviewContent";
 
 interface Props {
   primaryColor: string;
