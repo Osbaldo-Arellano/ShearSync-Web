@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import { FaInstagram } from "react-icons/fa";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function HeroBannerGallery({ images }: { images: string[] }) {
   const [current, setCurrent] = useState(0);
@@ -24,7 +26,7 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
       sx={{
         position: "relative",
         width: "100%",
-        height: { xs: 100, sm: 60, lg: 250 },
+        height: { xs: 100, sm: 160, lg: 250 },
         overflow: "hidden",
         borderRadius: 2,
       }}
@@ -74,7 +76,7 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
           },
         }}
       >
-        ◀
+        <ArrowBackIosNewIcon fontSize="small" />
       </IconButton>
 
       {/* Right Arrow */}
@@ -93,7 +95,7 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
           },
         }}
       >
-        ▶
+        <ArrowForwardIosIcon fontSize="small" />
       </IconButton>
     </Paper>
   );

@@ -41,7 +41,6 @@ export default function PreviewPanel({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        p: 3,
       }}
     >
       {props.viewport === "mobile" ? (

@@ -79,6 +79,7 @@ export default function StylingIDE() {
         fontFamily: "sans-serif",
       }}
     >
+      {/* Contains: Title, Logged in as, Desktop and Mobile view switcher, zoomcontrols */}
       <BuilderHeader
         viewport={viewport}
         onViewportChange={setViewport}
@@ -123,20 +124,6 @@ export default function StylingIDE() {
             onNext={() => null}
           />
         </Box>
-
-        {/* Resizer */}
-        <Box
-          onMouseDown={handleMouseDown}
-          sx={{
-            width: 8,
-            cursor: "col-resize",
-            bgcolor: "neutral.800",
-            "&:hover": {
-              bgcolor: "neutral.700",
-            },
-            transition: "background-color 0.2s",
-          }}
-        />
 
         {/* Preview Panel */}
         <Box sx={{ flex: 1, overflow: "auto", height: "100%" }}>

@@ -10,6 +10,7 @@ import LocationText from "./LocationText";
 import LogoDisplay from "./LogoDisplay";
 import SocialLinksList from "./SocialLinksList";
 import fontClassMap from "./fontClassMap";
+import PreviewContent from "./PreviewContent";
 
 interface Props {
   primaryColor: string;
@@ -86,51 +87,26 @@ export default function MobilePreview(props: Props) {
             zIndex: 10,
           }}
         />
-
         {/* Preview Content */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            height: "100%",
-            bgcolor: backgroundColor,
-            color: textColor,
-            fontFamily: fontClassMap.bodyFont || "inherit",
-          }}
-        >
-          {heroBannerUrls.length > 0 && <HeroBanner images={heroBannerUrls} />}
-
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              gap: 3,
-              p: 3,
-            }}
-          >
-            {logoUrl && <LogoDisplay src={logoUrl} />}
-            <Heading
-              text="Booking Page Preview"
-              font={headingFont}
-              size={headingFontSize}
-              weight={headingWeight}
-              color={primaryColor}
-            />
-            <AboutText
-              text={about}
-              font={bodyFont}
-              size={bodyFontSize}
-              weight={bodyWeight}
-            />
-            {location && <LocationText location={location} />}
-            <SocialLinksList links={socialLinks} />
-            <LayoutInfo layout={layout} />
-          </Box>
-        </Box>
+        <PreviewContent
+          logoUrl={logoUrl}
+          headingFont={headingFont}
+          headingSize={headingSize * 0.7}
+          headingWeight={headingWeight}
+          primaryColor={primaryColor}
+          about={about}
+          bodyFont={bodyFont}
+          bodySize={bodySize * 0.7}
+          bodyWeight={bodyWeight}
+          location={location}
+          socialLinks={socialLinks}
+          layout={layout}
+          // Don't pass availability; mobile skips it
+          showAvailability={false}
+          padding={3}
+          gap={3}
+          heroBannerUrls={heroBannerUrls}
+        />{" "}
       </Box>
     </Box>
   );

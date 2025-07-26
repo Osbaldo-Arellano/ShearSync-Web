@@ -1,15 +1,9 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import AboutText from "./AboutText";
-import AvailabilityTable from "./AvailabilityTable";
-import Heading from "./Heading";
 import HeroBanner from "./HeroBanner";
-import LayoutInfo from "./LayoutInfo";
-import LocationText from "./LocationText";
-import LogoDisplay from "./LogoDisplay";
-import SocialLinksList from "./SocialLinksList";
 import fontClassMap from "./fontClassMap";
+import PreviewContent from "./PreviewContent";
 
 interface Props {
   primaryColor: string;
@@ -55,9 +49,6 @@ export default function DesktopPreview({
       sx={{
         width: "100%",
         height: "90vh",
-        border: "1px dashed",
-        borderColor: "neutral.700",
-        borderRadius: 2,
         overflowY: "auto",
       }}
     >
@@ -72,38 +63,24 @@ export default function DesktopPreview({
           fontFamily: fontClassMap.bodyFont || "inherit",
         }}
       >
-        {heroBannerUrls.length > 0 && <HeroBanner images={heroBannerUrls} />}
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            gap: 3,
-            p: 4,
-          }}
-        >
-          {logoUrl && <LogoDisplay src={logoUrl} />}
-          <Heading
-            text="Booking Page Preview"
-            font={headingFont}
-            size={headingSize}
-            weight={headingWeight}
-            color={primaryColor}
-          />
-          <AboutText
-            text={about}
-            font={bodyFont}
-            size={bodySize}
-            weight={bodyWeight}
-          />
-          {location && <LocationText location={location} />}
-          <AvailabilityTable availability={availability} />
-          <SocialLinksList links={socialLinks} />
-          <LayoutInfo layout={layout} />
-        </Box>
+        <PreviewContent
+          logoUrl={logoUrl}
+          headingFont={headingFont}
+          headingSize={headingSize}
+          headingWeight={headingWeight}
+          primaryColor={primaryColor}
+          about={about}
+          bodyFont={bodyFont}
+          bodySize={bodySize}
+          bodyWeight={bodyWeight}
+          location={location}
+          socialLinks={socialLinks}
+          layout={layout}
+          showAvailability={true}
+          padding={4}
+          gap={3}
+          heroBannerUrls={heroBannerUrls}
+        />
       </Box>
     </Box>
   );
