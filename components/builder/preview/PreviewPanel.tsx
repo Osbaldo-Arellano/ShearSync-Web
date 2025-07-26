@@ -1,5 +1,6 @@
 "use client";
 
+import Box from "@mui/material/Box";
 import MobilePreview from "./MobilePreview";
 import DesktopPreview from "./DesktopPreview";
 
@@ -32,19 +33,29 @@ export default function PreviewPanel({
   ...props
 }: PreviewPanelProps) {
   return (
-    <main className="flex-1 overflow-auto flex items-center justify-center p-6">
+    <Box
+      component="main"
+      sx={{
+        flex: 1,
+        overflow: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: 3,
+      }}
+    >
       {props.viewport === "mobile" ? (
-        <div
-          style={{
+        <Box
+          sx={{
             transform: `scale(${zoomLevel})`,
             transformOrigin: "top center",
           }}
         >
           <MobilePreview {...props} />
-        </div>
+        </Box>
       ) : (
         <DesktopPreview {...props} />
       )}
-    </main>
+    </Box>
   );
 }

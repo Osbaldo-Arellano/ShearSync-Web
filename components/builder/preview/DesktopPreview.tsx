@@ -1,5 +1,6 @@
 "use client";
 
+import Box from "@mui/material/Box";
 import AboutText from "./AboutText";
 import AvailabilityTable from "./AvailabilityTable";
 import Heading from "./Heading";
@@ -28,37 +29,62 @@ interface Props {
   theme: string;
 }
 
-export default function DesktopPreview(props: Props) {
-  const {
-    primaryColor,
-    layout,
-    logoUrl,
-    heroBannerUrls,
-    about,
-    headingFont,
-    bodyFont,
-    headingSize,
-    bodySize,
-    headingWeight,
-    bodyWeight,
-    location,
-    socialLinks,
-    availability,
-    theme,
-  } = props;
-
-  const bg =
-    theme === "light" ? "bg-white text-black" : "bg-neutral-950 text-white";
+export default function DesktopPreview({
+  primaryColor,
+  layout,
+  logoUrl,
+  heroBannerUrls,
+  about,
+  headingFont,
+  bodyFont,
+  headingSize,
+  bodySize,
+  headingWeight,
+  bodyWeight,
+  location,
+  socialLinks,
+  availability,
+  theme,
+}: Props) {
+  const isLight = theme === "light";
+  const backgroundColor = isLight ? "white" : "neutral.950";
+  const textColor = isLight ? "black" : "white";
 
   return (
-    <div className="w-full h-full border border-dashed border-neutral-700 rounded-lg overflow-y-auto">
-      <div
-        className={`flex flex-col w-full h-full ${bg}`}
-        style={{ fontFamily: fontClassMap.bodyFont || "inherit" }}
+    <Box
+      sx={{
+        width: "100%",
+        height: "90vh",
+        border: "1px dashed",
+        borderColor: "neutral.700",
+        borderRadius: 2,
+        overflowY: "auto",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+          bgcolor: backgroundColor,
+          color: textColor,
+          fontFamily: fontClassMap.bodyFont || "inherit",
+        }}
       >
         {heroBannerUrls.length > 0 && <HeroBanner images={heroBannerUrls} />}
 
-        <div className="flex flex-col items-center justify-center p-6 text-center gap-4">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            gap: 3,
+            p: 4,
+          }}
+        >
           {logoUrl && <LogoDisplay src={logoUrl} />}
           <Heading
             text="Booking Page Preview"
@@ -77,8 +103,8 @@ export default function DesktopPreview(props: Props) {
           <AvailabilityTable availability={availability} />
           <SocialLinksList links={socialLinks} />
           <LayoutInfo layout={layout} />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }

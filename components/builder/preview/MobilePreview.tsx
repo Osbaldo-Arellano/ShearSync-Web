@@ -1,5 +1,6 @@
 "use client";
 
+import Box from "@mui/material/Box";
 import AboutText from "./AboutText";
 import AvailabilityTable from "./AvailabilityTable";
 import Heading from "./Heading";
@@ -49,39 +50,89 @@ export default function MobilePreview(props: Props) {
 
   const headingFontSize = headingSize * 0.7;
   const bodyFontSize = bodySize * 0.7;
-  const bg =
-    theme === "light" ? "bg-white text-black" : "bg-neutral-950 text-white";
+  const backgroundColor = theme === "light" ? "white" : "neutral.950";
+  const textColor = theme === "light" ? "black" : "white";
 
   return (
-    <div className="w-[375px] h-[667px] bg-black rounded-[40px] border-[10px] border-neutral-700 shadow-lg relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-neutral-800 rounded-b-lg z-10" />
-      <div
-        className={`flex flex-col w-full h-full ${bg}`}
-        style={{ fontFamily: fontClassMap.bodyFont || "inherit" }}
+    <Box
+      sx={{
+        height: "100vh",
+      }}
+    >
+      <Box
+        sx={{
+          width: 375,
+          height: 667,
+          borderRadius: "40px",
+          border: "10px solid",
+          borderColor: "neutral.700",
+          boxShadow: 6,
+          bgcolor: "black",
+          overflow: "hidden",
+          position: "relative",
+        }}
       >
-        {heroBannerUrls.length > 0 && <HeroBanner images={heroBannerUrls} />}
+        {/* Status bar bump */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 96,
+            height: 16,
+            borderRadius: "0 0 12px 12px",
+            bgcolor: "neutral.800",
+            zIndex: 10,
+          }}
+        />
 
-        <div className="flex flex-col items-center justify-center p-6 text-center gap-4">
-          {logoUrl && <LogoDisplay src={logoUrl} />}
-          <Heading
-            text="Booking Page Preview"
-            font={headingFont}
-            size={headingFontSize}
-            weight={headingWeight}
-            color={primaryColor}
-          />
-          <AboutText
-            text={about}
-            font={bodyFont}
-            size={bodyFontSize}
-            weight={bodyWeight}
-          />
-          {location && <LocationText location={location} />}
-          <AvailabilityTable availability={availability} />
-          <SocialLinksList links={socialLinks} />
-          <LayoutInfo layout={layout} />
-        </div>
-      </div>
-    </div>
+        {/* Preview Content */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            height: "100%",
+            bgcolor: backgroundColor,
+            color: textColor,
+            fontFamily: fontClassMap.bodyFont || "inherit",
+          }}
+        >
+          {heroBannerUrls.length > 0 && <HeroBanner images={heroBannerUrls} />}
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              gap: 3,
+              p: 3,
+            }}
+          >
+            {logoUrl && <LogoDisplay src={logoUrl} />}
+            <Heading
+              text="Booking Page Preview"
+              font={headingFont}
+              size={headingFontSize}
+              weight={headingWeight}
+              color={primaryColor}
+            />
+            <AboutText
+              text={about}
+              font={bodyFont}
+              size={bodyFontSize}
+              weight={bodyWeight}
+            />
+            {location && <LocationText location={location} />}
+            <AvailabilityTable availability={availability} />
+            <SocialLinksList links={socialLinks} />
+            <LayoutInfo layout={layout} />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }

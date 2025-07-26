@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 import ColorPickerInput from "@/components/builder/inputs/ColorPickerInput";
 import LayoutSelectInput from "@/components/builder/inputs/LayoutSelectInput";
@@ -25,43 +28,32 @@ interface SidebarProps {
   layout: string;
   onColorChange: (color: string) => void;
   onLayoutChange: (layout: string) => void;
-
   logoUrl: string | null;
   onLogoUpload: (logo: string | null) => void;
-
   heroBannerUrls: string[];
   onHeroBannerUpload: (banners: string[]) => void;
-
   about: string;
   onAboutChange: (value: string) => void;
-
   headingFont: string;
   bodyFont: string;
   onHeadingFontChange: (font: string) => void;
   onBodyFontChange: (font: string) => void;
-
   headingSize: number;
   bodySize: number;
   onHeadingSizeChange: (size: number) => void;
   onBodySizeChange: (size: number) => void;
-
   headingWeight: number;
   bodyWeight: number;
   onHeadingWeightChange: (weight: number) => void;
   onBodyWeightChange: (weight: number) => void;
-
   availability: Availability;
   onAvailabilityChange: (availability: Availability) => void;
-
   location: string;
   onLocationChange: (value: string) => void;
-
   socialLinks: string[];
   onSocialLinksChange: (links: string[]) => void;
-
   theme: string;
   onThemeChange: (theme: string) => void;
-
   onNext?: () => void;
 }
 
@@ -114,14 +106,37 @@ export default function Sidebar({
   }
 
   return (
-    <aside className="w-[480px] border-r border-neutral-800 bg-neutral-900 px-8 py-6 text-sm text-gray-300 overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent">
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        overflowY: "auto",
+        bgcolor: "neutral.900",
+        borderRight: "1px solid",
+        borderColor: "neutral.800",
+        px: 4,
+        py: 3,
+        fontSize: "0.875rem",
+        color: "grey.300",
+      }}
+    >
       {/* Sidebar Title */}
-      <div className="text-[10px] uppercase font-semibold text-gray-500 tracking-wider mb-4">
+      <Typography
+        variant="body2"
+        sx={{
+          fontSize: "10px",
+          textTransform: "uppercase",
+          fontWeight: 600,
+          color: "grey.500",
+          letterSpacing: 1,
+          mb: 2,
+        }}
+      >
         Style Options
-      </div>
+      </Typography>
 
       {/* Base Inputs */}
-      <div className="flex flex-col gap-6">
+      <Box display="flex" flexDirection="column" gap={3}>
         <ColorPickerInput value={primaryColor} onChange={onColorChange} />
         <LayoutSelectInput value={layout} onChange={onLayoutChange} />
         <LogoUploadInput onUpload={onLogoUpload} />
@@ -131,40 +146,73 @@ export default function Sidebar({
         />
 
         {/* Theme preset buttons */}
-        <div className="flex flex-col gap-2">
-          <label className="text-xs text-gray-400">Choose a Theme</label>
-          <div className="flex gap-2 flex-wrap mb-4">
+        <Box>
+          <Typography variant="caption" sx={{ color: "grey.400" }}>
+            Choose a Theme
+          </Typography>
+          <Box mt={1} display="flex" gap={1} flexWrap="wrap" mb={2}>
             {Object.keys(themePresets).map((key) => (
-              <button
+              <Button
                 key={key}
+                variant="outlined"
+                size="small"
                 onClick={() =>
                   handleThemeSelect(key as keyof typeof themePresets)
                 }
-                className="text-xs bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded px-3 py-1"
+                sx={{
+                  borderColor: "neutral.700",
+                  backgroundColor: "neutral.800",
+                  color: "white",
+                  textTransform: "capitalize",
+                  fontSize: "0.75rem",
+                  "&:hover": {
+                    backgroundColor: "neutral.700",
+                    borderColor: "neutral.600",
+                  },
+                }}
               >
-                {key[0].toUpperCase() + key.slice(1)}
-              </button>
+                {key}
+              </Button>
             ))}
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
 
       {/* Toggle for advanced options */}
-      <div className="mt-6 mb-2 flex justify-between items-center">
-        <span className="text-xs text-gray-400 uppercase tracking-wide">
+      <Box
+        mt={4}
+        mb={1}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Typography
+          variant="caption"
+          sx={{
+            color: "grey.400",
+            textTransform: "uppercase",
+            letterSpacing: 1,
+          }}
+        >
           Advanced Styling
-        </span>
-        <button
+        </Typography>
+        <Button
           onClick={() => setShowAdvanced((prev) => !prev)}
-          className="text-xs text-blue-400 hover:underline"
+          size="small"
+          sx={{
+            color: "info.light",
+            fontSize: "0.75rem",
+            textTransform: "none",
+            "&:hover": { textDecoration: "underline" },
+          }}
         >
           {showAdvanced ? "Hide" : "Show"}
-        </button>
-      </div>
+        </Button>
+      </Box>
 
       {/* Advanced styling options */}
       {showAdvanced && (
-        <div className="flex flex-col gap-6">
+        <Box display="flex" flexDirection="column" gap={3}>
           <FontSelector
             headingFont={headingFont}
             bodyFont={bodyFont}
@@ -183,20 +231,34 @@ export default function Sidebar({
             onHeadingWeightChange={onHeadingWeightChange}
             onBodyWeightChange={onBodyWeightChange}
           />
-        </div>
+        </Box>
       )}
 
       {/* Optional "Next Step" button for navigation */}
       {onNext && (
-        <div className="mt-8 flex justify-end">
-          <button
+        <Box mt={6} display="flex" justifyContent="flex-end">
+          <Button
             onClick={onNext}
-            className="px-4 py-2 rounded bg-neutral-800 hover:bg-neutral-700 text-sm font-semibold text-white border border-neutral-700 transition"
+            variant="outlined"
+            sx={{
+              color: "white",
+              borderColor: "neutral.700",
+              backgroundColor: "neutral.800",
+              "&:hover": {
+                backgroundColor: "neutral.700",
+                borderColor: "neutral.600",
+              },
+              fontWeight: 600,
+              textTransform: "none",
+              px: 3,
+              py: 1,
+              fontSize: "0.875rem",
+            }}
           >
             Next Step →
-          </button>
-        </div>
+          </Button>
+        </Box>
       )}
-    </aside>
+    </Box>
   );
 }
