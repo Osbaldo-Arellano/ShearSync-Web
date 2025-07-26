@@ -13,15 +13,20 @@ export default function AboutText({
   weight: number;
 }) {
   return (
-    <p
-      className="max-w-md text-gray-400"
-      style={{
-        fontFamily: fontClassMap[font] || "inherit",
-        fontSize: `${size}px`,
-        fontWeight: weight,
-      }}
-    >
-      {text || "Your business bio will appear here."}
-    </p>
+    <>
+      {Array.from({ length: 50 }).map((_, i) => (
+        <p
+          key={i}
+          className="max-w-md text-gray-400"
+          style={{
+            fontFamily: fontClassMap[font] || "inherit",
+            fontSize: `${size}px`,
+            fontWeight: weight,
+          }}
+        >
+          {text || "Your business bio will appear here."}
+        </p>
+      ))}
+    </>
   );
 }

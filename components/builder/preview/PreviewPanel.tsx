@@ -4,33 +4,14 @@ import Box from "@mui/material/Box";
 import MobilePreview from "./views/MobilePreview";
 import DesktopPreview from "./views/DesktopPreview";
 
-interface Availability {
-  [day: string]: { open: string; close: string };
-}
-
 interface PreviewPanelProps {
-  primaryColor: string;
-  layout: "compact" | "tabbed" | "sidebar";
-  logoUrl: string | null;
-  heroBannerUrls: string[];
-  about: string;
-  headingFont: string;
-  bodyFont: string;
-  headingSize: number;
-  bodySize: number;
-  headingWeight: number;
-  bodyWeight: number;
-  location: string;
-  socialLinks: string[];
-  availability: Availability;
-  theme: string;
   viewport: "desktop" | "mobile";
-  zoomLevel?: number; // only applies to mobile
+  zoomLevel?: number;
 }
 
 export default function PreviewPanel({
+  viewport,
   zoomLevel = 1,
-  ...props
 }: PreviewPanelProps) {
   return (
     <Box
@@ -43,17 +24,17 @@ export default function PreviewPanel({
         justifyContent: "center",
       }}
     >
-      {props.viewport === "mobile" ? (
+      {viewport === "mobile" ? (
         <Box
           sx={{
             transform: `scale(${zoomLevel})`,
             transformOrigin: "top center",
           }}
         >
-          <MobilePreview {...props} />
+          <MobilePreview />
         </Box>
       ) : (
-        <DesktopPreview {...props} />
+        <DesktopPreview />
       )}
     </Box>
   );

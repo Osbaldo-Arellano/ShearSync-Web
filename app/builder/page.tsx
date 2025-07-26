@@ -5,41 +5,11 @@ import Box from "@mui/material/Box";
 import Sidebar from "@/components/builder/sidebar/Sidebar";
 import PreviewPanel from "@/components/builder/preview/PreviewPanel";
 import BuilderHeader from "@/components/builder/preview/content/styles/BuilderHeader";
-
-interface Availability {
-  [day: string]: { open: string; close: string };
-}
+import { StylingProvider } from "@/context/StylingContext";
 
 export default function StylingIDE() {
-  const [primaryColor, setPrimaryColor] = useState("#cccc");
-  const [layout, setLayout] = useState<"compact" | "tabbed" | "sidebar">(
-    "compact"
-  );
-  const [logoUrl, setLogoUrl] = useState<string | null>(null);
-  const [heroBannerUrls, setHeroBannerUrls] = useState<string[]>([]);
-  const [about, setAbout] = useState("");
-  const [headingFont, setHeadingFont] = useState("Inter");
-  const [bodyFont, setBodyFont] = useState("Inter");
-  const [headingSize, setHeadingSize] = useState(24);
-  const [bodySize, setBodySize] = useState(16);
-  const [headingWeight, setHeadingWeight] = useState(700);
-  const [bodyWeight, setBodyWeight] = useState(400);
-  const [availability, setAvailability] = useState<Availability>({
-    Mon: { open: "", close: "" },
-    Tue: { open: "", close: "" },
-    Wed: { open: "", close: "" },
-    Thu: { open: "", close: "" },
-    Fri: { open: "", close: "" },
-    Sat: { open: "", close: "" },
-    Sun: { open: "", close: "" },
-  });
-  const [location, setLocation] = useState("");
-  const [socialLinks, setSocialLinks] = useState<string[]>([]);
-  const [theme, setTheme] = useState("dark");
   const [viewport, setViewport] = useState<"desktop" | "mobile">("desktop");
   const [zoomLevel, setZoomLevel] = useState(1);
-
-  // Resizing state
   const [sidebarWidth, setSidebarWidth] = useState(320);
   const isResizing = useRef(false);
 
@@ -55,7 +25,7 @@ export default function StylingIDE() {
 
   const handleMouseMove = (e: MouseEvent) => {
     if (isResizing.current) {
-      const newWidth = Math.min(Math.max(e.clientX, 200), 600); // clamp
+      const newWidth = Math.min(Math.max(e.clientX, 200), 600);
       setSidebarWidth(newWidth);
     }
   };
@@ -70,86 +40,35 @@ export default function StylingIDE() {
   }, []);
 
   return (
-    <Box
-      sx={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        bgcolor: "neutral.900",
-        color: "white",
-        fontFamily: "sans-serif",
-      }}
-    >
-      {/* Contains: Title, Logged in as, Desktop and Mobile view switcher, zoomcontrols */}
-      <BuilderHeader
-        viewport={viewport}
-        onViewportChange={setViewport}
-        zoomLevel={zoomLevel}
-        setZoomLevel={setZoomLevel}
-      />
+    <StylingProvider>
+      <Box
+        sx={{
+          height: "100vh",
+          width: "100vw",
+          display: "flex",
+          flexDirection: "column",
+          bgcolor: "neutral.900",
+          color: "white",
+          fontFamily: "sans-serif",
+        }}
+      >
+        <BuilderHeader
+          viewport={viewport}
+          onViewportChange={setViewport}
+          zoomLevel={zoomLevel}
+          setZoomLevel={setZoomLevel}
+        />
 
-      <Box sx={{ display: "flex", flex: 1, overflow: "hidden" }}>
-        {/* Sidebar */}
-        <Box sx={{ width: sidebarWidth, height: "100%", overflowY: "auto" }}>
-          <Sidebar
-            primaryColor={primaryColor}
-            layout={layout}
-            onColorChange={setPrimaryColor}
-            onLayoutChange={setLayout}
-            logoUrl={logoUrl}
-            onLogoUpload={setLogoUrl}
-            heroBannerUrls={heroBannerUrls}
-            onHeroBannerUpload={setHeroBannerUrls}
-            about={about}
-            onAboutChange={setAbout}
-            headingFont={headingFont}
-            bodyFont={bodyFont}
-            onHeadingFontChange={setHeadingFont}
-            onBodyFontChange={setBodyFont}
-            headingSize={headingSize}
-            bodySize={bodySize}
-            onHeadingSizeChange={setHeadingSize}
-            onBodySizeChange={setBodySize}
-            headingWeight={headingWeight}
-            bodyWeight={bodyWeight}
-            onHeadingWeightChange={setHeadingWeight}
-            onBodyWeightChange={setBodyWeight}
-            availability={availability}
-            onAvailabilityChange={setAvailability}
-            location={location}
-            onLocationChange={setLocation}
-            socialLinks={socialLinks}
-            onSocialLinksChange={setSocialLinks}
-            theme={theme}
-            onThemeChange={setTheme}
-            onNext={() => null}
-          />
-        </Box>
+        <Box sx={{ display: "flex", flex: 1, overflow: "hidden" }}>
+          <Box sx={{ width: sidebarWidth, height: "100%", overflowY: "auto" }}>
+            <Sidebar onNext={() => null} />
+          </Box>
 
-        {/* Preview Panel */}
-        <Box sx={{ flex: 1, overflow: "auto", height: "100%" }}>
-          <PreviewPanel
-            primaryColor={primaryColor}
-            layout={layout}
-            logoUrl={logoUrl}
-            heroBannerUrls={heroBannerUrls}
-            about={about}
-            headingFont={headingFont}
-            bodyFont={bodyFont}
-            headingSize={headingSize}
-            bodySize={bodySize}
-            headingWeight={headingWeight}
-            bodyWeight={bodyWeight}
-            location={location}
-            socialLinks={socialLinks}
-            availability={availability}
-            theme={theme}
-            viewport={viewport}
-            zoomLevel={zoomLevel}
-          />
+          <Box sx={{ flex: 1, overflow: "auto", height: "100%" }}>
+            <PreviewPanel viewport={viewport} zoomLevel={zoomLevel} />
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </StylingProvider>
   );
 }

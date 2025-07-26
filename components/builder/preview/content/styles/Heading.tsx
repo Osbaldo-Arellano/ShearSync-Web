@@ -1,22 +1,24 @@
 "use client";
+import { useStyling } from "@/context/StylingContext";
 import fontClassMap from "./fontClassMap";
 
 interface Props {
   text: string;
-  font: string;
-  size: number;
-  weight: number;
-  color: string;
+  color?: string; // optional override
+  sizeMultiplier?: number; // optional scale
 }
 
-export default function Heading({ text, font, size, weight, color }: Props) {
+export default function Heading({ text, color, sizeMultiplier = 1 }: Props) {
+  const { headingFont, headingSize, headingWeight, primaryColor } =
+    useStyling();
+
   return (
     <h1
       style={{
-        color,
-        fontFamily: fontClassMap[font] || "inherit",
-        fontSize: `${size}px`,
-        fontWeight: weight,
+        color: color || primaryColor,
+        fontFamily: fontClassMap[headingFont] || "inherit",
+        fontSize: `${headingSize * sizeMultiplier}px`,
+        fontWeight: headingWeight,
       }}
     >
       {text}

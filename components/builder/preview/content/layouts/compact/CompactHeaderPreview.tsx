@@ -1,50 +1,26 @@
 "use client";
 
-/**
- * HeaderPreview.tsx
- *
- * A responsive header section inspired by the ChatoBlendz example.
- * Includes:
- * - Carousel (HeroBanner)
- * - Service Tags (from about string)
- * - Logo & Brand Info
- */
-
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+
 import HeroBanner from "../../styles/HeroBanner";
 import LogoDisplay from "../../styles/LogoDisplay";
 import Heading from "../../styles/Heading";
-import AboutText from "../../data/AboutText";
+import { useStyling } from "@/context/StylingContext";
 
-interface HeaderPreviewProps {
-  heroBannerUrls: string[];
-  logoUrl: string | null;
-  headingFont: string;
-  headingSize: number;
-  headingWeight: number;
-  primaryColor: string;
-  about: string; // can be parsed into tags
-  bodyFont: string;
-  bodySize: number;
-  bodyWeight: number;
-}
+export default function CompactHeaderPreview() {
+  const {
+    heroBannerUrls,
+    logoUrl,
+    primaryColor,
+    about,
+    bodyFont,
+    bodySize,
+    bodyWeight,
+  } = useStyling();
 
-export default function CompactHeaderPreview({
-  heroBannerUrls,
-  logoUrl,
-  headingFont,
-  headingSize,
-  headingWeight,
-  primaryColor,
-  about,
-  bodyFont,
-  bodySize,
-  bodyWeight,
-}: HeaderPreviewProps) {
-  // Optionally split `about` into tags
   const tags = about
     .split(/[,.•|]+/)
     .map((tag) => tag.trim())
@@ -62,7 +38,6 @@ export default function CompactHeaderPreview({
         boxShadow: 3,
       }}
     >
-      {/* Carousel */}
       {heroBannerUrls?.length > 0 && (
         <Box
           sx={{
@@ -85,7 +60,6 @@ export default function CompactHeaderPreview({
           gap: 2,
         }}
       >
-        {/* Tag chips */}
         {tags.length > 0 && (
           <Stack direction="row" flexWrap="wrap" spacing={1}>
             {tags.map((tag, index) => (
@@ -94,7 +68,6 @@ export default function CompactHeaderPreview({
           </Stack>
         )}
 
-        {/* Logo + Branding */}
         <Box
           sx={{
             display: "flex",
@@ -105,16 +78,12 @@ export default function CompactHeaderPreview({
           }}
         >
           {logoUrl && <LogoDisplay src={logoUrl} />}
-
           <Box>
             <Heading
               text={
                 about?.trim() ||
                 "Proudly serving the Salem, Woodburn, and Portland areas."
               }
-              font={headingFont}
-              size={headingSize * 0.6}
-              weight={headingWeight}
               color={primaryColor}
             />
             <Typography

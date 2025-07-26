@@ -1,53 +1,9 @@
-"use client";
-
-import Box from "@mui/material/Box";
-import AboutText from "../content/data/AboutText";
-import AvailabilityTable from "../content/data/AvailabilityTable";
-import Heading from "../content/styles/Heading";
-import HeroBanner from "../content/styles/HeroBanner";
-import LayoutInfo from "../content/styles/LayoutInfo";
-import LocationText from "../content/data/LocationText";
-import LogoDisplay from "../content/styles/LogoDisplay";
-import SocialLinksList from "../content/data/SocialLinksList";
-import fontClassMap from "../content/styles/fontClassMap";
+import { useStyling } from "@/context/StylingContext";
+import { Box } from "@mui/material";
 import PreviewContent from "../content/PreviewContent";
 
-interface Props {
-  primaryColor: string;
-  layout: "compact" | "tabbed" | "sidebar";
-  logoUrl: string | null;
-  heroBannerUrls: string[];
-  about: string;
-  headingFont: string;
-  bodyFont: string;
-  headingSize: number;
-  bodySize: number;
-  headingWeight: number;
-  bodyWeight: number;
-  location: string;
-  socialLinks: string[];
-  availability: { [day: string]: { open: string; close: string } };
-  theme: string;
-}
-
-export default function MobilePreview(props: Props) {
-  const {
-    primaryColor,
-    layout,
-    logoUrl,
-    heroBannerUrls,
-    about,
-    headingFont,
-    bodyFont,
-    headingSize,
-    bodySize,
-    headingWeight,
-    bodyWeight,
-    location,
-    socialLinks,
-    availability,
-    theme,
-  } = props;
+export default function MobilePreview() {
+  const { headingSize, bodySize, theme } = useStyling();
 
   const headingFontSize = headingSize * 0.7;
   const bodyFontSize = bodySize * 0.7;
@@ -58,14 +14,17 @@ export default function MobilePreview(props: Props) {
     <Box
       sx={{
         height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: backgroundColor,
       }}
     >
       <Box
         sx={{
-          width: 375,
-          height: 667,
+          width: 500,
+          height: 900,
           borderRadius: "40px",
-          border: "10px solid",
           borderColor: "neutral.700",
           boxShadow: 6,
           bgcolor: "black",
@@ -87,25 +46,17 @@ export default function MobilePreview(props: Props) {
             zIndex: 10,
           }}
         />
+
         {/* Preview Content */}
-        <PreviewContent
-          logoUrl={logoUrl}
-          headingFont={headingFont}
-          headingSize={headingSize * 0.7}
-          headingWeight={headingWeight}
-          primaryColor={primaryColor}
-          about={about}
-          bodyFont={bodyFont}
-          bodySize={bodySize * 0.7}
-          bodyWeight={bodyWeight}
-          location={location}
-          socialLinks={socialLinks}
-          layout={layout}
-          showAvailability={false}
-          padding={3}
-          gap={3}
-          heroBannerUrls={heroBannerUrls}
-        />{" "}
+        <Box
+          sx={{
+            height: "100%",
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          <PreviewContent />
+        </Box>
       </Box>
     </Box>
   );

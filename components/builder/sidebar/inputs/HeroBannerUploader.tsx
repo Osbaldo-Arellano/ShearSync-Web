@@ -71,9 +71,9 @@ export default function HeroBannerUploader({
             />
             <button
               onClick={() => handleRemove(index)}
-              className="absolute top-0 right-0 bg-black bg-opacity-60 text-white text-xs px-1 rounded-bl hover:bg-opacity-80"
+              className="absolute top-0 right-0 bg-gray-500 bg-opacity-50 text-white text-xs px-1 rounded-bl hover:bg-opacity-70"
             >
-              ✕
+              X
             </button>
           </div>
         ))}
