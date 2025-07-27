@@ -17,8 +17,6 @@ export default function PreviewPanel({
     <Box
       component="main"
       sx={{
-        flex: 1,
-        overflow: "auto",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -34,7 +32,14 @@ export default function PreviewPanel({
           <MobilePreview />
         </Box>
       ) : (
-        <DesktopPreview />
+        <Box
+          sx={{
+            transform: `scale(${zoomLevel})`,
+            transformOrigin: "top center",
+          }}
+        >
+          <DesktopPreview />
+        </Box>
       )}
     </Box>
   );

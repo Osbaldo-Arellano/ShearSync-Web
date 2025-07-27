@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import { useStyling } from "@/context/StylingContext";
+import { DeviceFrameset } from "react-device-frameset";
+import "react-device-frameset/styles/marvel-devices.min.css";
+
 import PreviewContent from "../content/PreviewContent";
+import { useStyling } from "@/context/StylingContext";
 
 export default function MobilePreview() {
   const { theme } = useStyling();
@@ -21,76 +24,35 @@ export default function MobilePreview() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Calculate max preview height
-  const maxPhoneHeight = Math.min(windowHeight - 64, 844); // 64px breathing room
+  const maxHeight = Math.min(windowHeight - 64, 844); // iPhone height max cap
 
   return (
-    <Box
-      sx={{
-        height: "100vh",
-        overflow: "auto",
-        display: "flex",
-        justifyContent: "center",
-        bgcolor: backgroundColor,
-        py: 4,
-      }}
-    >
-      {/* Phone container */}
-      <Box
-        sx={{
-          width: 500,
-          height: maxPhoneHeight,
-          borderRadius: "40px",
-          borderColor: "neutral.700",
-          boxShadow: 6,
-          bgcolor: "white",
-          overflow: "hidden",
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
+    <Box>
+      <DeviceFrameset
+        device="iPhone X"
+        landscape={false}
+        zoom={1}
+        style={{
+          maxHeight,
+          width: "auto",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
         }}
       >
-        {/* Status bar bump */}
         <Box
           sx={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: 96,
-            height: 16,
-            bgcolor: "neutral.800",
-            zIndex: 10,
-          }}
-        />
-
-        {/* Scrollable content */}
-        <Box
-          sx={{
-            flex: 1,
+            width: "100%",
+            height: "100%",
             overflowY: "auto",
-            WebkitOverflowScrolling: "touch",
+            bgcolor: "white",
             display: "flex",
             flexDirection: "column",
             scrollbarWidth: "none",
             "&::-webkit-scrollbar": { display: "none" },
           }}
         >
-          <Box
-            sx={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-              width: "100%",
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <PreviewContent />
-          </Box>
+          <PreviewContent />
         </Box>
-      </Box>
+      </DeviceFrameset>
     </Box>
   );
 }
