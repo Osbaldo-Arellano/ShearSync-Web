@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -26,6 +27,8 @@
     "@types/react": "^19",
     "@types/react-color": "^3.0.13",
     "@types/react-dom": "^19",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react-device-frames": "^1.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
