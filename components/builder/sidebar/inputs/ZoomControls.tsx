@@ -50,7 +50,7 @@ export default function ZoomControls({
           fontSize: "0.75rem",
         }}
       >
-        Mobile Zoom {Math.round(zoomLevel * 100)}%
+        Zoom {Math.round(zoomLevel * 100)}%
       </Typography>
 
       {/* Plus Button */}
