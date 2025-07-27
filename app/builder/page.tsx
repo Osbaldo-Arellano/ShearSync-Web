@@ -64,7 +64,16 @@ export default function StylingIDE() {
             <Sidebar onNext={() => null} />
           </Box>
 
-          <Box sx={{ flex: 1, overflow: "auto", height: "100%" }}>
+          <Box
+            sx={{
+              flex: 1,
+              height: "100%",
+              overflow: "auto",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-start",
+            }}
+          >
             <PreviewPanel viewport={viewport} zoomLevel={zoomLevel} />
           </Box>
         </Box>

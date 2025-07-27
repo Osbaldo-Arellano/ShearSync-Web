@@ -27,7 +27,7 @@ export default function MobilePreview() {
   const maxHeight = Math.min(windowHeight - 64, 844); // iPhone height max cap
 
   return (
-    <Box>
+    <Box sx={{ mt: 10 }}>
       <DeviceFrameset
         device="iPhone X"
         landscape={false}
@@ -35,7 +35,6 @@ export default function MobilePreview() {
         style={{
           maxHeight,
           width: "auto",
-          boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
         }}
       >
         <Box

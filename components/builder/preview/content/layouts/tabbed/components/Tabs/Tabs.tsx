@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import MuiTabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import ServicesTab from "./ServicesTab";
+import ServicesTab from "./ServicesTab/ServicesTab";
 import AboutTab from "./AboutTab";
 import PortfolioTab from "./PortfolioTab";
 import { useStyling } from "@/context/StylingContext";

@@ -6,7 +6,7 @@ import AvailabilityTable from "./data/AvailabilityTable";
 import LayoutInfo from "./styles/LayoutInfo";
 import LocationText from "./data/LocationText";
 import SocialLinksList from "./data/SocialLinksList";
-import DynamicHeaderPreview from "./layouts/DynamicHeaderPreview";
+import DynamicHeaderPreview from "./layouts/DynamicLayoutPreview";
 import { useStyling } from "@/context/StylingContext";
 
 /**

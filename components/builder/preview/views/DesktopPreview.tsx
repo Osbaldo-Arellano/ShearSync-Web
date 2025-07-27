@@ -19,31 +19,36 @@ export default function DesktopPreview() {
       sx={{
         width: "100%",
         height: "90vh",
-        overflow: "auto",
         display: "flex",
+        mt: 10,
         justifyContent: "center",
         alignItems: "center",
         bgcolor: backgroundColor,
       }}
     >
-      <DeviceFrameset device="MacBook Pro" zoom={0.8}>
-        <Box
-          sx={{
-            width: "100%",
-            height: "100%",
-            bgcolor: backgroundColor,
-            color: textColor,
-            fontFamily: fontClassMap.bodyFont || "inherit",
-            overflowY: "auto",
-            scrollbarWidth: "none",
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-          }}
-        >
-          <PreviewContent />
-        </Box>
-      </DeviceFrameset>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <DeviceFrameset device="MacBook Pro" zoom={1} style={{ width: "100%" }}>
+          <Box
+            sx={{
+              height: "100%",
+              maxHeight: "100vh",
+              overflowY: "auto", // allow scrolling within the preview
+              bgcolor: backgroundColor,
+              color: textColor,
+              fontFamily: fontClassMap.bodyFont || "inherit",
+              scrollbarWidth: "none",
+              "&::-webkit-scrollbar": { display: "none" },
+            }}
+          >
+            <PreviewContent />
+          </Box>
+        </DeviceFrameset>
+      </Box>
     </Box>
   );
 }
