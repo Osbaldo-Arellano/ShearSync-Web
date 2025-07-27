@@ -13,7 +13,17 @@ export default function DesktopPreview() {
   const textColor = isLight ? "black" : "white";
 
   return (
-    <Box sx={{ width: "100%", height: "90vh", overflowY: "auto" }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "90vh",
+        overflowY: "auto", // Hide scrollbar
+        scrollbarWidth: "none", // Firefox
+        "&::-webkit-scrollbar": {
+          display: "none", // Chrome, Safari, Edge
+        },
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -23,6 +33,11 @@ export default function DesktopPreview() {
           bgcolor: backgroundColor,
           color: textColor,
           fontFamily: fontClassMap.bodyFont || "inherit",
+          // Hide scrollbar
+          scrollbarWidth: "none", // Firefox
+          "&::-webkit-scrollbar": {
+            display: "none", // Chrome, Safari, Edge
+          },
         }}
       >
         <PreviewContent />

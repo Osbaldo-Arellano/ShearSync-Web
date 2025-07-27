@@ -33,7 +33,11 @@ export default function Tabs({ activeTab, onChange }: TabsProps) {
             variant="scrollable"
             scrollButtons="auto"
             textColor="inherit"
-            indicatorColor="secondary"
+            slotProps={{
+              indicator: {
+                sx: { display: "none" },
+              },
+            }}
             sx={{
               "& .MuiTab-root": {
                 color: "white",
@@ -44,7 +48,6 @@ export default function Tabs({ activeTab, onChange }: TabsProps) {
               },
               "& .Mui-selected": {
                 color: "white",
-                borderBottom: "2px solid white",
               },
               maxWidth: "100%",
             }}
@@ -59,7 +62,7 @@ export default function Tabs({ activeTab, onChange }: TabsProps) {
       {/* Tab Content */}
       <Box
         sx={{
-          p: { xs: 2, sm: 4 },
+          p: { xs: 2, sm: 2 },
           bgcolor: "background.default",
         }}
       >

@@ -18,8 +18,8 @@ import { useStyling } from "@/context/StylingContext";
 
 export default function PreviewContent({
   showAvailability = false,
-  padding = 4,
-  gap = 3,
+  padding = 0,
+  gap = 0,
 }: {
   showAvailability?: boolean;
   padding?: number;
