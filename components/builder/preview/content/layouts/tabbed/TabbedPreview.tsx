@@ -23,7 +23,6 @@ export default function TabbedPreview() {
         width: "100%",
         maxWidth: "100%",
         bgcolor: "background.paper",
-        borderRadius: { xs: 0, sm: 3 },
         overflow: "hidden",
       }}
     >

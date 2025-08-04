@@ -41,12 +41,9 @@ export default function MobilePreview() {
           sx={{
             width: "100%",
             height: "100%",
-            overflowY: "auto",
             bgcolor: "white",
             display: "flex",
             flexDirection: "column",
-            scrollbarWidth: "none",
-            "&::-webkit-scrollbar": { display: "none" },
           }}
         >
           <PreviewContent />

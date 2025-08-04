@@ -17,9 +17,17 @@ export default function PreviewPanel({
     <Box
       component="main"
       sx={{
+        width: "100%",
+        minHeight: "100vh", // key for sticky footer behavior
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        ...(viewport === "mobile"
+          ? {
+              alignItems: "center",
+              justifyContent: "center",
+            }
+          : {
+              flexDirection: "column",
+            }),
       }}
     >
       {viewport === "mobile" ? (
@@ -32,14 +40,7 @@ export default function PreviewPanel({
           <MobilePreview />
         </Box>
       ) : (
-        <Box
-          sx={{
-            transform: `scale(${zoomLevel})`,
-            transformOrigin: "top center",
-          }}
-        >
-          <DesktopPreview />
-        </Box>
+        <DesktopPreview />
       )}
     </Box>
   );

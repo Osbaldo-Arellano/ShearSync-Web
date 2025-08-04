@@ -6,8 +6,9 @@ import AvailabilityTable from "./data/AvailabilityTable";
 import LayoutInfo from "./styles/LayoutInfo";
 import LocationText from "./data/LocationText";
 import SocialLinksList from "./data/SocialLinksList";
-import DynamicHeaderPreview from "./layouts/DynamicLayoutPreview";
+import DynamicLayoutPreview from "./layouts/DynamicLayoutPreview";
 import { useStyling } from "@/context/StylingContext";
+import Footer from "./layouts/shared/Footer";
 
 /**
  * PreviewContent.tsx
@@ -32,22 +33,34 @@ export default function PreviewContent({
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        gap,
-        p: padding,
+        minHeight: "100%", // ensures footer is pushed down
       }}
     >
-      <DynamicHeaderPreview />
+      <Box
+        sx={{
+          flexGrow: 1, // makes this section take up remaining space
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          gap,
+          p: padding,
+        }}
+      >
+        <DynamicLayoutPreview />
 
-      {location && <LocationText location={location} />}
-      {showAvailability && availability && (
-        <AvailabilityTable availability={availability} />
-      )}
+        {location && <LocationText location={location} />}
+        {showAvailability && availability && (
+          <AvailabilityTable availability={availability} />
+        )}
 
-      <SocialLinksList links={socialLinks} />
-      <LayoutInfo layout={layout} />
+        <SocialLinksList links={socialLinks} />
+      </Box>
+
+      <Box sx={{ flexShrink: 0 }}>
+        <Footer />
+      </Box>
     </Box>
   );
 }

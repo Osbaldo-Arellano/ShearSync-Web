@@ -26,7 +26,12 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
       sx={{
         position: "relative",
         width: "100%",
-        height: { xs: 100, sm: 160, lg: 250 },
+        height: {
+          xs: 160,
+          sm: 220,
+          md: 300,
+          lg: 360,
+        },
         overflow: "hidden",
         borderRadius: 2,
       }}
@@ -36,7 +41,11 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
         src={images[current]}
         alt={`Gallery Image ${current + 1}`}
         fill
-        style={{ objectFit: "cover" }}
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
         priority
       />
 
@@ -55,6 +64,7 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
           "&:hover": {
             bgcolor: "rgba(0, 0, 0, 0.7)",
           },
+          zIndex: 2,
         }}
       >
         <FaInstagram size={20} />
@@ -70,7 +80,7 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
           transform: "translateY(-50%)",
           bgcolor: "rgba(0, 0, 0, 0.4)",
           color: "white",
-          zIndex: 1,
+          zIndex: 2,
           "&:hover": {
             bgcolor: "rgba(0, 0, 0, 0.7)",
           },
@@ -89,7 +99,7 @@ export default function HeroBannerGallery({ images }: { images: string[] }) {
           transform: "translateY(-50%)",
           bgcolor: "rgba(0, 0, 0, 0.4)",
           color: "white",
-          zIndex: 1,
+          zIndex: 2,
           "&:hover": {
             bgcolor: "rgba(0, 0, 0, 0.7)",
           },

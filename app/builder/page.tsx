@@ -13,11 +13,6 @@ export default function StylingIDE() {
   const [sidebarWidth, setSidebarWidth] = useState(320);
   const isResizing = useRef(false);
 
-  const handleMouseDown = () => {
-    isResizing.current = true;
-    document.body.style.cursor = "col-resize";
-  };
-
   const handleMouseUp = () => {
     isResizing.current = false;
     document.body.style.cursor = "default";
